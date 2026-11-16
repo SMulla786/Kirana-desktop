@@ -1,0 +1,221 @@
+/* Adapted from kirana-F src/ui/ui.css: buttons, fields, alert, spinner, brand mark. */
+
+.k-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--k-space-2);
+    min-height: var(--k-target);
+    min-width: var(--k-target);
+    padding: 0 var(--k-space-4);
+    border: 1px solid transparent;
+    border-radius: var(--k-radius);
+    font-size: var(--k-text-md);
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+        background-color 150ms ease,
+        border-color 150ms ease,
+        transform 120ms var(--k-ease-out);
+}
+
+.k-btn:active:not(:disabled) {
+    transform: scale(0.97);
+}
+
+.k-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.k-btn--block {
+    width: 100%;
+    min-height: 3rem;
+}
+
+.k-btn--primary {
+    background: var(--k-brand);
+    color: var(--k-on-brand);
+}
+
+.k-btn--secondary {
+    background: transparent;
+    color: var(--k-text);
+    border-color: var(--k-border-strong);
+}
+
+.k-btn--primary:active:not(:disabled) {
+    background: var(--k-brand-hover);
+}
+
+.k-btn--secondary:active:not(:disabled) {
+    background: var(--k-surface-2);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .k-btn--primary:hover:not(:disabled) {
+        background: var(--k-brand-hover);
+    }
+
+    .k-btn--secondary:hover:not(:disabled) {
+        background: var(--k-surface-2);
+        border-color: var(--k-text-muted);
+    }
+}
+
+.k-spinner {
+    flex: none;
+    width: 1em;
+    height: 1em;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: k-spin 0.7s linear infinite;
+}
+
+.k-spinner--lg {
+    width: 2rem;
+    height: 2rem;
+    border-width: 3px;
+    color: var(--k-brand);
+}
+
+@keyframes k-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.k-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--k-space-2);
+}
+
+.k-field__label {
+    font-size: var(--k-text-sm);
+    font-weight: 500;
+    color: var(--k-text-muted);
+}
+
+.k-field__hint {
+    font-size: var(--k-text-sm);
+    color: var(--k-text-muted);
+}
+
+.k-field__error {
+    font-size: var(--k-text-sm);
+    font-weight: 600;
+    color: var(--k-danger);
+}
+
+.k-input {
+    width: 100%;
+    min-height: var(--k-target);
+    padding: 0 var(--k-space-3);
+    color: var(--k-text);
+    background: var(--k-surface-2);
+    border: 1px solid var(--k-border-strong);
+    border-radius: var(--k-radius);
+    transition: border-color 150ms ease;
+}
+
+.k-input::placeholder {
+    color: var(--k-text-muted);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .k-input:hover:not(:focus-visible) {
+        border-color: var(--k-text-muted);
+    }
+}
+
+.k-input:focus-visible {
+    border-color: var(--k-focus);
+}
+
+.k-input[aria-invalid='true'] {
+    border-color: var(--k-danger);
+}
+
+/* Colour is never the only signal: the alert always has an icon and words. */
+.k-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--k-space-3);
+    padding: var(--k-space-3) var(--k-space-4);
+    font-size: var(--k-text-sm);
+    font-weight: 500;
+    color: var(--k-text);
+    background: var(--k-danger-bg);
+    border: 1px solid color-mix(in srgb, var(--k-danger) 40%, transparent);
+    border-radius: var(--k-radius);
+    overflow-wrap: anywhere;
+}
+
+.k-alert__icon {
+    flex: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--k-danger);
+}
+
+/* Shown after a server reply (the 409 business picker, a login error): a short rise says
+   "this is new". Rare, so it may move; never on keyboard-driven screen changes. */
+.k-reveal {
+    transition:
+        opacity 200ms var(--k-ease-out),
+        transform 200ms var(--k-ease-out);
+}
+
+@starting-style {
+    .k-reveal {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+}
+
+.k-mark {
+    flex: none;
+}
+
+.k-mark__tile {
+    fill: var(--k-brand);
+}
+
+.k-mark__ink {
+    fill: var(--k-on-brand);
+}
+
+.k-mark__line {
+    fill: none;
+    stroke: var(--k-on-brand);
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Reduced motion: gentler, not none. Keep fades, drop movement and the spin. */
+@media (prefers-reduced-motion: reduce) {
+    .k-btn:active:not(:disabled) {
+        transform: none;
+    }
+
+    .k-reveal {
+        transform: none;
+    }
+
+    @starting-style {
+        .k-reveal {
+            transform: none;
+        }
+    }
+
+    .k-spinner {
+        animation: none;
+        border-style: dotted;
+        border-right-color: currentColor;
+    }
+}
