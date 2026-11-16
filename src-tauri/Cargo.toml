@@ -11,3 +11,13 @@ tauri-build = { version = "=2.7.4", features = [] }
 
 [dependencies]
 tauri = { version = "=2.12.5", features = [] }
+serde = { version = "=1.0.229", features = ["derive"] }
+serde_json = "=1.0.154"
+# native-tls = SChannel on Windows: no extra C toolchain (rustls' default aws-lc needs one).
+reqwest = { version = "=0.13.5", default-features = false, features = ["json", "native-tls"] }
+# Default `v1` feature: Windows Credential Manager (macOS Keychain, Secret Service elsewhere).
+keyring = "=4.2.0"
+tokio = { version = "=1.54.1", features = ["sync"] }
+
+[dev-dependencies]
+tokio = { version = "=1.54.1", features = ["macros", "rt"] }
