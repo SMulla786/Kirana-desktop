@@ -15,7 +15,8 @@ export const en = {
         password: 'Password',
         business: 'Business',
         chooseBusiness: 'Choose a business',
-        businessHint: 'This account works in more than one business. Choose the one for this counter.',
+        businessHint:
+            'This account works in more than one business. Choose the one for this counter.',
         submit: 'Sign in',
         webAdmin: 'Forgot your password or need an account? Use the KiranaOS web admin.',
         errors: {
