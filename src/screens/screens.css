@@ -82,6 +82,7 @@
 .auth__lead,
 .auth__muted {
     color: var(--k-text-muted);
+    text-wrap: pretty;
 }
 
 .auth__account {
@@ -129,9 +130,10 @@
     flex: none;
 }
 
+/* The shop name is what the cashier must always see; the user block gives way first. */
 .pos__shop {
-    flex: 1;
-    min-width: 0;
+    flex: 1 1 auto;
+    min-width: 7rem;
 }
 
 .pos__business {
@@ -147,11 +149,19 @@
 }
 
 .pos__user {
+    flex: 0 1 auto;
     min-width: 0;
     max-width: 16rem;
     padding-right: var(--k-space-4);
     text-align: right;
     border-right: 1px solid var(--k-border);
+}
+
+/* Only reachable at 150%+ zoom on the 960px minimum window: a sliver of a name helps no one. */
+@media (max-width: 640px) {
+    .pos__user {
+        display: none;
+    }
 }
 
 .pos__name {
@@ -186,6 +196,7 @@
 .empty__text {
     max-width: 44ch;
     color: var(--k-text-muted);
+    text-wrap: pretty;
 }
 
 .empty__icon {
