@@ -1,0 +1,7 @@
+{
+    "$schema": "../gen/schemas/desktop-schema.json",
+    "identifier": "main",
+    "description": "The POS window gets no core or plugin permissions (no shell, fs, http, window or event APIs). Its only IPC is the four app commands in src/main.rs, which Tauri allows for local app content only.",
+    "windows": ["main"],
+    "permissions": []
+}

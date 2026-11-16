@@ -1,0 +1,12 @@
+node_modules/
+dist/
+out/
+*.local
+.env
+.env.*
+!.env.example
+# Rust / Tauri build output
+src-tauri/target/
+src-tauri/gen/
+# Same policy as Kirana-B and kirana-F (DECISIONS P-006): the npm lockfile stays local for now.
+package-lock.json
