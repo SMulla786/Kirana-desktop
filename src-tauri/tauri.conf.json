@@ -4,10 +4,10 @@
     "version": "0.1.0",
     "identifier": "in.kiranaos.desktop",
     "build": {
-        "beforeDevCommand": "npm run dev:web",
+        "beforeDevCommand": "npm --prefix ../kirana-F run dev -- --port 1420 --strictPort",
         "devUrl": "http://localhost:1420",
-        "beforeBuildCommand": "npm run build:web",
-        "frontendDist": "../dist"
+        "beforeBuildCommand": "npm --prefix ../kirana-F run build",
+        "frontendDist": "../../kirana-F/dist"
     },
     "app": {
         "windows": [],
